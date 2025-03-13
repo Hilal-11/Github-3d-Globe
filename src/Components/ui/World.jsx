@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Canvas, extend } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import countries from "../../data/global.json"; // Updated import path
 
-extend({ ThreeGlobe });
+extend({ OrbitControls });
 
 const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
@@ -188,7 +188,7 @@ export function World(props) {
         position={new Vector3(-200, 500, 200)}
         intensity={0.8} />
       <Globe {...props} />
-      <OrbitControls
+      <orbitControls
         enablePan={false}
         enableZoom={false}
         minDistance={cameraZ}
