@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { motion } from "motion/react";
-const World = lazy(() => import("./ui/World").then((m) => ({ default: m.World })));
+import { World } from "./ui/World";
+// const World = lazy(() => import("./ui/World").then((m) => ({ default: m.World })));
 
 
 export function GlobeDemo() {
@@ -421,7 +422,9 @@ export function GlobeDemo() {
         <div
           className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
         <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <World data={sampleArcs} globeConfig={globeConfig} />
+          </Suspense>
         </div>
       </div>
     </div>)
